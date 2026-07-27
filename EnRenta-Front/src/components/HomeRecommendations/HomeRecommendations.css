@@ -1,14 +1,30 @@
 .recommendations {
   width: 100%;
   max-width: var(--container-width);
-
   margin: 0 auto;
+  padding: var(--spacing-xl) 10px; 
+  
+} 
 
-  padding: var(--spacing-xl) 20px;
+@media screen and (min-width: 370px) and (max-width: 767px) {
+  .recommendations {
+    display: flex;
+    flex-direction: column;
 
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 24px;
+    
+  }
 }
+@media screen and (min-width: 768px) and (max-width: 1023px)  {
+  .recommendations {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+} 
+@media screen and (min-width: 1024px)  {
+  .recommendations {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+} 

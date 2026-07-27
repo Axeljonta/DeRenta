@@ -1,6 +1,12 @@
+import { useNavigate } from "react-router-dom";
+import { useCarById } from "../../hooks/useCarById";
+import { FaAngleDoubleLeft } from "react-icons/fa";
+import ProductGallery from "../../components/ProductGallery/ProductGallery.jsx";
+import "./CarDetail.css";
+
 const CarDetail = () => {
 
-    const { car } = useCarById();
+    const car = useCarById();
     const navigate = useNavigate();
 
     if (!car) {
@@ -10,38 +16,15 @@ const CarDetail = () => {
     return ( 
     
         <section className="product-detail">
-
             <header className="product-header">
-
                 <h1>{car.carName}</h1>
-
-                <button onClick={() => navigate(-1)}>
-                ←
-                </button>
-
+                <button onClick={() => navigate(-1)}><FaAngleDoubleLeft/></button>
             </header>
-
             <div className="product-body">
-
-                <div className="product-gallery">
-
-                {car.images.map((image) => (
-
-                    <img
-                    key={image.id}
-                    src={image.imageUrl}
-                    alt={car.carName}
-                    />
-
-                ))}
-
-                </div>
-
-                <p>{car.carDescription}</p>
-
-            </div>
-
+                <ProductGallery />
+            </div> 
+            <p>{car.carDescription}</p> 
         </section>
   );
-
 }
+export default CarDetail;

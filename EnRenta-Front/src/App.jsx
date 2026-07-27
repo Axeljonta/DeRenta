@@ -11,6 +11,7 @@ import Sucursales from "./pages/Sucursales/Sucursales.jsx";
 import FAQs from "./pages/FAQs/FAQs.jsx";
 import Admin from "./pages/Admin/Admin.jsx";
 import SaveCar from "./pages/Admin/SaveCar.jsx";
+import CarDetail from "./pages/CarDetail/CarDetail.jsx";
 
 function App() {
   return(
@@ -25,6 +26,7 @@ function App() {
             <Route path="/FAQs" element={<FAQs />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/admin/save-car" element={<SaveCar />} />
+            <Route path="/cars/:id" element={<CarDetail/>} />
         </Routes> 
       </main>
     </BrowserRouter>

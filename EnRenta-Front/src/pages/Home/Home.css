@@ -1,0 +1,17 @@
+/*==================== HOME RECOMENDATION =================*/
+.homeRecomendaciones{
+    background-color: var(--color-primary);
+}
+.homeRecomendaciones h3 {
+    background: linear-gradient(180deg,var(--color-background)75%, rgba(0, 1, 44, 1) 100%);
+    text-align: center; 
+    color: var(--color-primary);
+    padding: var(--spacing-lg) 0;
+}
+
+@media screen and (min-width: 350px) and (max-width: 767px) {
+  
+    .homeRecomendaciones h3 {
+        font-size: var(--text-lg);
+    }
+  }

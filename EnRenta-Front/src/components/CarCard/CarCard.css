@@ -1,20 +1,72 @@
 .car-card {
-  background-color: var(--color-surface);
+  background-color: var(--color-background);
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
+
+
 }
 
 .car-card img {
   width: 100%;
-  height: 220px;
+  height: 200px;
   object-fit: cover;
+  border-bottom: var(--color-accent) clamp(4px, 0.5vw, 6px) solid;
+}
+
+.car-card-title {
+  color: var(--color-primary);
+  text-decoration: none;  
+  
 }
 
 .car-card-content {
   padding: var(--spacing-md);
 }
 
-.car-card h3 {
+.car-card h5 {
   margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+  display: -webkit-box;
+    -webkit-line-clamp: 1;        
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+.car-card small {
+  display: block;
+  color: rgb(90, 90, 90);
+  padding: 6px 0;
+  border-top: rgb(201, 201, 201) 1px solid;
+  border-bottom: rgb(209, 209, 209) 1px solid;
+
+}
+
+.car-card-content p {
+  color: var(--color-primary);
+  display: -webkit-box;
+    -webkit-line-clamp: 3;        
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: var(--text-md);
+}
+
+@media screen and (min-width: 350px) and (max-width: 767px) {
+  
+  .car-card {
+
+    margin: var(--spacing-md) auto;
+    width: 95%;
+  }
+
+  .car-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: var(--color-accent) clamp(4px, 0.5vw, 6px) solid;
+}
+}
+@media screen and (min-width: 768px) and (max-width: 1023px)  {} 
+@media screen and (min-width: 1024px)  {} 
