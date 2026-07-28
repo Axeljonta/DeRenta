@@ -39,14 +39,15 @@ const ProductGallery = () => {
                             <button onClick={() => setIsModalOpen(true)}>Ver más...</button>
                         </div>
                     </div> 
-                    
-                    <ModalGallery
+                    <div className="modal-gallery-container">
+                        <ModalGallery
                         isOpen={isModalOpen}
                         onClose={() => setIsModalOpen(false)}
                         images={car.images}
                         title={car.carName}
+                        />
+                    </div>
                     
-                    />
                 
 
                 </div>
