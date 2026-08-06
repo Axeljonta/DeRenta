@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Navbar from './components/Navbar/Navbar'
-
+import { Footer } from "./components/Footer/Footer.jsx"
 
 import Home from "./pages/Home/Home.jsx";
 import Modelos from "./pages/Modelos/Modelos.jsx";
@@ -29,6 +29,9 @@ function App() {
             <Route path="/cars/:id" element={<CarDetail/>} />
         </Routes> 
       </main>
+      <section className="homeFooter">
+        <Footer />
+      </section>
     </BrowserRouter>
     
   )

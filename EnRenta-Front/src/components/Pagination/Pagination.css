@@ -1,0 +1,22 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; 
+    
+}
+
+.pagination-button {
+    color: var(--color-primary);
+    font-size: var(--text-lg);
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: var(--transition);
+} 
+
+.pagination-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-accent);
+    border-radius: 4px;
+}

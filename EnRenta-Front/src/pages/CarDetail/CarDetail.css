@@ -13,9 +13,9 @@
 
   padding: 24px 40px;
 
-  background-color: var(--color-primary);
+  background-color: var(--color-background);
 
-  color: white;
+  color: var(--color-primary);
 
   display: flex;
 
@@ -35,7 +35,7 @@
 
   background: transparent;
 
-  color: white;
+  color: var(--color-primary);
 
   font-size: 2rem;
 

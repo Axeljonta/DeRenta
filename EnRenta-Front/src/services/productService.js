@@ -13,6 +13,12 @@ export const createCar = async (carData) => {
     }
 }
 
+export const getAllCars = async () => {
+    const res = await axios.get(API + "modelos");
+    return res.data;
+}
+
+//Devuelve liste de 3 autos random
 export const getRandomCars = async () => {
   const res = await axios.get(API +"random");
   return res.data;
@@ -24,3 +30,4 @@ export const getCarById = async (id) => {
     );
     return res.data;       
 };
+

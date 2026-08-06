@@ -1,7 +1,7 @@
 :root {
   /* Colors */
   --color-primary: #00012c;
-  --color-secondary: #0205af;
+  --color-secondary: #f1e2ca;
   --color-accent: #F5C21A;
   --color-accent2: #ac8404;
 
@@ -69,7 +69,7 @@ body{
 
 /* ==========  M A I N  ========= */
 main{
-  min-height: 100vh;
+  min-height: 85vh;
   background: #fff2d6;
 }
 
@@ -170,7 +170,7 @@ small {
 }
 
 
-@media screen and (min-width: 370px) and (max-width: 767px) {}
+@media screen and (min-width: 350px) and (max-width: 767px) {}
 @media screen and (min-width: 768px) and (max-width: 1023px)  {} 
 @media screen and (min-width: 1024px)  {} 
 

@@ -11,7 +11,6 @@ export const HomeRecommendations = () => {
   if (loading) {
     return <p>Cargando autos...</p>;
   }
-  console.log(cars);
   
   return (
     <section className="recommendations">
