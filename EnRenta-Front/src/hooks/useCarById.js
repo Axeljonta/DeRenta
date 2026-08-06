@@ -26,7 +26,6 @@ export const useCarById = () => {
         fetchCar();
     }, [id]);
 
-    console.log(car);
     
     return car;
 };

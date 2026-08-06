@@ -1,7 +1,7 @@
 //service/productService.js
 import axios from "axios";
 
-const API = "http://localhost:8080/cars/";
+const API = "http://localhost:8080/cars";
 
 export const createCar = async (carData) => {
     try {
@@ -14,19 +14,19 @@ export const createCar = async (carData) => {
 }
 
 export const getAllCars = async () => {
-    const res = await axios.get(API + "modelos");
+    const res = await axios.get(API + "/modelos");
     return res.data;
 }
 
 //Devuelve liste de 3 autos random
 export const getRandomCars = async () => {
-  const res = await axios.get(API +"random");
+  const res = await axios.get(API + "/random");
   return res.data;
 };
 
 export const getCarById = async (id) => {
     const res = await axios.get(
-        `${API}${id}`
+        `${API}/${id}`
     );
     return res.data;       
 };

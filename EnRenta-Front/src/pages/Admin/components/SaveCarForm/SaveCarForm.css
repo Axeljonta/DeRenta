@@ -1,0 +1,106 @@
+/* Contenedor principal del formulario */
+.save-car-form {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.save-car-form h2 {
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+  font-size: 1.5rem;
+}
+
+/* Campos de entrada de texto y textarea */
+.save-car-form input[type="text"],
+.save-car-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dcdfe6;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.save-car-form input[type="text"]:focus,
+.save-car-form textarea:focus {
+  outline: none;
+  border-color: #0d6efd;
+}
+
+.save-car-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Sección dinamica de imágenes */
+.images-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #f8f9fa;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px dashed #ced4da;
+}
+
+.images-section label {
+  font-weight: 600;
+  color: #495057;
+  font-size: 0.9rem;
+}
+
+/* Botón para agregar más campos de imágenes */
+.images-section button[type="button"] {
+  align-self: flex-start;
+  background-color: transparent;
+  color: #0d6efd;
+  border: 1px solid #0d6efd;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.images-section button[type="button"]:hover {
+  background-color: #0d6efd;
+  color: #ffffff;
+}
+
+/* Botón principal de envío */
+.save-car-form button[type="submit"] {
+  background-color: #198754;
+  color: #ffffff;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.save-car-form button[type="submit"]:hover {
+  background-color: #157347;
+}
+
+/* Mensajes de error */
+.error-message {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  margin: 0;
+}

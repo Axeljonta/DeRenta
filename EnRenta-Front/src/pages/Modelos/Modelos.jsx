@@ -10,7 +10,7 @@ function Modelos() {
   //estado para la paginacion
   const [currentPage, setCurrentPage] = useState(1);
   //estado para la cantidad de autos por pagina
-  const [carsQuantity, setCarsQuantity] = useState(3);
+  const [carsQuantity, setCarsQuantity] = useState(6);
 
   //calculo paginacion
   const totalItems = cars ? cars.length : 0;

@@ -1,0 +1,32 @@
+/* Contenedor principal */
+.modelos {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+/* Título */
+.modelos h1 {
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+
+/* Grilla de tarjetas de autos */
+.recommendations {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+/* Sección de paginación centrada */
+.pagination-Component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}

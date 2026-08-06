@@ -69,8 +69,9 @@ body{
 
 /* ==========  M A I N  ========= */
 main{
-  min-height: 85vh;
-  background: #fff2d6;
+  min-height: 90vh;
+  background: #fff2d6; 
+  padding-top: 20px;
 }
 
 @media screen and (min-width: 370px) and (max-width: 767px) {
