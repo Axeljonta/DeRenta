@@ -53,7 +53,10 @@ public class CarServiceImpl implements ICarService {
 
     @Override
     public List<CarDTO> findAll() {
-        return List.of();
+        List<Car> cars = carRepository.findAll();
+        return cars.stream()
+                .map(carMapper::toDTO)
+                .toList();
     }
 
 
@@ -64,7 +67,7 @@ public class CarServiceImpl implements ICarService {
         Car car = carMapper.toEntity(carDTO);
 
         // 2.Establecer la relación bidireccional con las imágenes
-        if (car.getCarImages() != null && !car.getCarImages().isEmpty()) {
+        if (car.getCarImages() != null) {
             car.getCarImages().forEach(image -> image.setCar(car));
         }
 
@@ -83,7 +86,7 @@ public class CarServiceImpl implements ICarService {
 
     @Override
     public void delete(Long id) {
-
+        carRepository.deleteById(id);
     }
 
 

@@ -11,11 +11,7 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper(
-        componentModel = "spring",
-        unmappedTargetPolicy = ReportingPolicy.IGNORE,   // ← Esto es clave
-        unmappedSourcePolicy = ReportingPolicy.IGNORE
-)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CarMapper {
     //mapeo Entity DTO
      @Mapping(source = "carImages", target = "images")
@@ -23,7 +19,8 @@ public interface CarMapper {
      CarDTO toDTO(Car car);
 
      //mapeo DTO Entity
-     @Mapping(target = "carImages", ignore = true)
+     @Mapping(source = "images", target = "carImages")
+     @Mapping(target = "id", ignore = true)
      Car toEntity(CarDTO carDTO);
 
     // Mapeo de imágenes

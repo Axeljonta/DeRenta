@@ -24,7 +24,7 @@ public class Car {
     @Column(unique = true, name = "car_name")
     private String carName;
 
-    @Column(name= "car_description" )
+    @Column(name= "car_description", columnDefinition = "TEXT")
     private String carDescription;
 
     @OneToMany(mappedBy = "car",  cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

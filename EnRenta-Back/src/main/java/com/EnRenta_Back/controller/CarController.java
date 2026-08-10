@@ -5,6 +5,7 @@ import com.EnRenta_Back.entity.Car;
 import com.EnRenta_Back.exception.ResourceNotFoundException;
 import com.EnRenta_Back.repository.ICarRepository;
 import com.EnRenta_Back.service.ICarService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +33,7 @@ public class CarController {
     }
 
     //Endpoint GET all
-    @GetMapping
+    @GetMapping("/modelos")
     public ResponseEntity<List<CarDTO>> findAll() {
         return ResponseEntity.ok(carService.findAll());
     }

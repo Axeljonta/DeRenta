@@ -14,7 +14,7 @@ public interface ICarRepository extends JpaRepository<Car,Long> {
 
     Optional<Car> findByCarName(String carName);
 
-    @Query(value = "SELECT * FROM cars ORDER BY RAND() LIMIT 10", nativeQuery = true)
+    @Query(value = "SELECT * FROM cars ORDER BY RAND() LIMIT 3", nativeQuery = true)
     List<Car> findRandomCars();
 
 }
