@@ -23,5 +23,5 @@ export const useAllCars = () => {
 
   }, []);
 
-  return { cars, loading };
+  return { cars, loading, setCars };
 };

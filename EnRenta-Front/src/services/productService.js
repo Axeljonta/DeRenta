@@ -3,6 +3,7 @@ import axios from "axios";
 
 const API = "http://localhost:8080/cars";
 
+//POST
 export const createCar = async (carData) => {
     try {
         const res = await axios.post(API, carData);
@@ -12,6 +13,8 @@ export const createCar = async (carData) => {
         throw error.response?.data || "Error al añadir auto";
     }
 }
+
+//GET
 
 export const getAllCars = async () => {
     const res = await axios.get(API + "/modelos");
@@ -26,8 +29,17 @@ export const getRandomCars = async () => {
 
 export const getCarById = async (id) => {
     const res = await axios.get(
-        `${API}/${id}`
+        `/${API}/${id}`
     );
     return res.data;       
 };
 
+//PUT
+
+
+//DELETE
+
+export const deleteCarById = async (id) => {
+    const res = await axios.delete(`${API}/${id}`);
+    return res.data;
+};

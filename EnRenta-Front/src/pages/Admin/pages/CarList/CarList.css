@@ -91,4 +91,109 @@
 
 .btn-danger:hover {
   background-color: #bb2d3b;
+} 
+
+
+/* Modela para confirmar eliminacion */
+/* Fondo oscuro translúcido con desenfoque */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Caja principal del modal */
+.modal-content {
+  background-color: #ffffff;
+  padding: 1.75rem 2rem;
+  border-radius: 12px;
+  max-width: 450px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+  animation: scaleUp 0.2s ease-out;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.35rem;
+  color: #1f2937;
+}
+
+.modal-content p {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.modal-content strong {
+  color: #111827;
+}
+
+/* Contenedor de botones alineados a la derecha */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+/* Estilos para los botones dentro del modal */
+.modal-actions .btn {
+  padding: 0.55rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.modal-actions .btn:active {
+  transform: scale(0.98);
+}
+
+.modal-actions .btn-secondary {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.modal-actions .btn-secondary:hover {
+  background-color: #d1d5db;
+}
+
+.modal-actions .btn-danger {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+.modal-actions .btn-danger:hover {
+  background-color: #b91c1c;
+}
+
+/* Animaciones de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
