@@ -20,3 +20,14 @@ El sistema está diseñado para dar soporte a dos tipos de usuarios principales:
 * **Base de Datos:** Relacional (MySQL / PostgreSQL).
 
 ---
+
+---
+
+## 🎨 Identidad Visual y Diseño
+
+### Paleta de Colores
+![Paleta de Colores](./Docs/PaletaColores.png)
+
+### Logotipos de la Marca
+![Logo de EnRenta original](./Docs/LogoNegro.png)
+![Logo de EnRenta gris](./Docs/LogoGrisUniforme.png)
