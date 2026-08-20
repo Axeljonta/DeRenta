@@ -29,7 +29,7 @@ export const getRandomCars = async () => {
 
 export const getCarById = async (id) => {
     const res = await axios.get(
-        `/${API}/${id}`
+        `${API}/${id}`
     );
     return res.data;       
 };

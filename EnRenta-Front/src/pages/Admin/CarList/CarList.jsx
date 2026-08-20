@@ -1,7 +1,7 @@
-import {useAllCars} from "../../../../hooks/useAllCars.js";
-import {deleteCarById} from "../../../../services/productService.js";
+import {useAllCars} from "../../../hooks/useAllCars.js";
+import {deleteCarById} from "../../../services/productService.js";
 import { useState } from "react";
-import ModalGallery from "../../../../components/ProductGallery/ModalGallery.jsx";
+import ModalGallery from "../../../components/ProductGallery/ModalGallery.jsx";
 import "./CarList.css";
 
 const CarList = () => {

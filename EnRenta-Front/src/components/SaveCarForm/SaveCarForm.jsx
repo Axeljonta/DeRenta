@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useAllCars } from "../../../../hooks/useAllCars";
-import { createCar } from "../../../../services/productService";
+import { useAllCars } from "../../hooks/useAllCars";
+import { createCar } from "../../services/productService";
 import './SaveCarForm.css';
 
 

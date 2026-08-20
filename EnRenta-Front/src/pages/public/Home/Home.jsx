@@ -1,4 +1,4 @@
-import { HomeRecommendations } from "../../components/HomeRecommendations/HomeRecommendations.jsx"
+import { HomeRecommendations } from "../../../components/HomeRecommendations/HomeRecommendations.jsx"
 
 import "./Home.css";
 

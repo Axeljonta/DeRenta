@@ -1,7 +1,7 @@
-import {useAllCars} from "../../hooks/useAllCars";
-import { CarCard } from "../../components/CarCard/CarCard";
+import {useAllCars} from "../../../hooks/useAllCars.js";
+import { CarCard } from "../../../components/CarCard/CarCard.jsx";
 import { useState } from "react";
-import { Pagination } from "../../components/Pagination/Pagination.jsx";
+import { Pagination } from "../../../components/Pagination/Pagination.jsx";
 import "./Modelos.css";
 
 function Modelos() {

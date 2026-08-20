@@ -12,6 +12,7 @@ const ProductGallery = () => {
 
     if (!car) {return <p>Cargando...</p>;}
 
+    console.log('Car', car);
     const mainImage = car.images.find(
         image => image.mainImage
     );

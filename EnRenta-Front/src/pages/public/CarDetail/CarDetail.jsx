@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { useCarById } from "../../hooks/useCarById";
+import { useCarById } from "../../../hooks/useCarById.js";
 import { FaAngleDoubleLeft } from "react-icons/fa";
-import ProductGallery from "../../components/ProductGallery/ProductGallery.jsx";
+import ProductGallery from "../../../components/ProductGallery/ProductGallery.jsx";
 import "./CarDetail.css";
 
 const CarDetail = () => {
