@@ -89,6 +89,11 @@
   color: #ffffff;
 }
 
+.btn-edit{
+  width: 90%;
+  margin: auto;
+}
+
 .btn-danger:hover {
   background-color: #bb2d3b;
 } 
@@ -116,11 +121,15 @@
   background-color: #ffffff;
   padding: 1.75rem 2rem;
   border-radius: 12px;
-  max-width: 450px;
+  max-width: 650px;
   width: 90%;
+  height: 90%;
+  overflow-y: auto; /* Muestra scroll vertical solo si es necesario */
+  overflow-x: hidden;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   transform: translateY(0);
   animation: scaleUp 0.2s ease-out;
+
 }
 
 .modal-content h3 {
@@ -140,6 +149,8 @@
 .modal-content strong {
   color: #111827;
 }
+
+
 
 /* Contenedor de botones alineados a la derecha */
 .modal-actions {

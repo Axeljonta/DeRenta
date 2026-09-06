@@ -41,7 +41,7 @@ function Modelos() {
       <div>
         <h1>Modelo Page</h1>
       </div>
-      <div className="recommendations">
+      <div className="modelos-container">
         {currentCars.map((car) => (
           <CarCard
             key={car.id}
@@ -49,7 +49,7 @@ function Modelos() {
           />
         ))}
       </div>
-      <div className="pagination-Component">
+      <div className="pagination-component">
         <Pagination
           currentPage={currentPage}
           setCurrentPage={handlePageChange}

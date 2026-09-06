@@ -1,6 +1,7 @@
 /* Contenedor principal del formulario */
 .save-car-form {
   max-width: 600px;
+  width: 90%;
   margin: 30px auto;
   padding: 30px;
   background-color: #ffffff;

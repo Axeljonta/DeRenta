@@ -35,7 +35,15 @@ export const getCarById = async (id) => {
 };
 
 //PUT
-
+export const updateCar = async (id, carData) => {
+    try {
+        const res = await axios.put(`${API}/${id}`, carData);
+        return res.data;
+    } catch (error) {
+        console.error("Error updating car:", error);
+        throw error.response?.data || "Error al actualizar auto";
+    }
+};
 
 //DELETE
 

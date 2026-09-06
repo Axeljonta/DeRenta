@@ -9,7 +9,7 @@ function Admin() {
 
       <h1>Panel Administrador</h1> 
 
-      <div className="admin-container"> 
+      <div className="admin-container isVisible"> 
 
           <div className="admin-section"> 
             <h4>Agregar Vehículo </h4>

@@ -1,12 +1,12 @@
 .recommendations {
   width: 100%;
   max-width: var(--container-width);
-  margin: 0 auto;
+  margin: auto;
   padding: var(--spacing-xl) 10px; 
   
 } 
 
-@media screen and (min-width: 370px) and (max-width: 767px) {
+@media screen and (min-width: 350px) and (max-width: 767px) {
   .recommendations {
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@
 @media screen and (min-width: 768px) and (max-width: 1023px)  {
   .recommendations {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
 } 

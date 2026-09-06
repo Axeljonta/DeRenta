@@ -14,7 +14,7 @@
 }
 
 /* Grilla de tarjetas de autos */
-.recommendations {
+.modelos-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
@@ -22,7 +22,7 @@
 }
 
 /* Sección de paginación centrada */
-.pagination-Component {
+.pagination-component {
   display: flex;
   justify-content: center;
   align-items: center;
