@@ -1,0 +1,17 @@
+.at-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px); /* Ocupa la pantalla restando la altura estimada del Navbar */
+  padding: 2rem 1rem;
+  background-color: var(--color-secondary);
+  box-sizing: border-box;
+}
+
+.at-content {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

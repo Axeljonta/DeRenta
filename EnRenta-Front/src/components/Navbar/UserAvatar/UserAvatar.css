@@ -1,0 +1,34 @@
+.ua-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ua-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #3182ce;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  user-select: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ua-name {
+  font-size: 0.95rem;
+  color: #2d3748;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .ua-name {
+    display: none; /* En pantallas chicas solo muestra el círculo con las iniciales */
+  }
+}

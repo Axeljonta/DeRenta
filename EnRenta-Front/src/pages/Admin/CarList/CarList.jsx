@@ -1,5 +1,5 @@
 import {useAllCars} from "../../../hooks/useAllCars.js";
-import {deleteCarById} from "../../../services/productService.js";
+import {carService} from "../../../services/carService.js";
 import { useState } from "react";
 import ModalGallery from "../../../components/ProductGallery/ModalGallery.jsx";
 import { SaveCarForm } from "../SaveCar/SaveCarForm/SaveCarForm.jsx";
@@ -42,7 +42,7 @@ const CarList = () => {
         
         // Lógica para eliminar el auto con el id proporcionado
         try {
-            await deleteCarById(carId);
+            await carService.deleteCar(carId);
             setCars((prevCars) => prevCars.filter((car) => car.id !== carId));
             setCarToDelete(null);
             alert("Auto eliminado correctamente");

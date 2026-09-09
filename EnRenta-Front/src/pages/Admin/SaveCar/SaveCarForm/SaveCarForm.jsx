@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAllCars } from "../../../../hooks/useAllCars";
-import { createCar, updateCar } from "../../../../services/productService";
+import { carService } from "../../../../services/carService";
 import './SaveCarForm.css';
 
 
@@ -107,14 +107,14 @@ export const SaveCarForm = ({ carToEdit = null, setCars}) => {
     try {
       if(carToEdit){
         console.log("Payload enviado al backend:", cleanPayload);
-        const updatedCar = await updateCar(carToEdit.id, cleanPayload)
+        const updatedCar = await carService.updateCar(carToEdit.id, cleanPayload)
 
         if(setCars){
           setCars((prevCars)=> prevCars.map((car)=>(car.id === carToEdit.id ? updatedCar : car)))
         }
       } 
       else{
-        await createCar(cleanPayload); // Envía el JSON tal cual Postman
+        await carService.createCar(cleanPayload); // Envía el JSON tal cual Postman
         alert("Auto agregado con éxito");
         setForm({
           carName: "",

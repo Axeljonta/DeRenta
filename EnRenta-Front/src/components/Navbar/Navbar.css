@@ -1,254 +1,264 @@
-.navbar{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--color-primary);
-    padding: 28px clamp(15px, 2vw, 25px);
-    margin: 0;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000; 
-    border-bottom: var(--color-accent) clamp(6px, 0.5vw, 10px) solid;
+/* ===== NAVBAR PRINCIPAL ===== */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-primary);
+  padding: 28px clamp(15px, 2vw, 25px);
+  margin: 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom: var(--color-accent) clamp(6px, 0.5vw, 10px) solid;
 }
 
 /* ===== MENU HAMBURGUESA ===== */
-
-.menu{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: clamp(10px, 2vw, 32px); 
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: clamp(10px, 2vw, 32px);
 }
 
-.menu-icon{
-    font-size: clamp(26px, 3vw, 45px);
-    color: var(--color-surface);
-    cursor: pointer;
-    transition: color .3s ease;
+.menu-icon {
+  font-size: clamp(26px, 3vw, 45px);
+  color: var(--color-surface);
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.menu-icon:hover{
-    color: var(--color-accent);
+.menu-icon:hover {
+  color: var(--color-accent);
 }
 
 @media screen and (min-width: 350px) and (max-width: 767px) {
-    .menu {
-        height: 28px;
-        object-fit: contain;
-    }
+  .menu {
+    height: 28px;
+    object-fit: contain;
+  }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px)  {
-    .menu {
-        height: 42px;
-        object-fit: contain;
-    }
-} 
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .menu {
+    height: 42px;
+    object-fit: contain;
+  }
+}
 
-@media screen and (min-width: 1024px)  {
-    .menu{
-        height: 49px;
-        object-fit: contain;
-    }
-} 
+@media screen and (min-width: 1024px) {
+  .menu {
+    height: 49px;
+    object-fit: contain;
+  }
+}
 
 /* ===== LOGO ===== */
-
-.navbar-logo{
-    display: flex;
-    align-items: center;
-    margin-right: auto;
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
 }
 
-.navbar-logo img{
-    display: block;
-}
-
-@media screen and (min-width: 350px) and (max-width: 767px) {
-    .navbar-logo img {
-        width: 90px;
-        height: 28px;
-        object-fit: contain;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px)  {
-    .navbar-logo img {
-        width: 140px;
-        height: 42px;
-        object-fit: contain;
-    }
-} 
-
-@media screen and (min-width: 1024px)  {
-    .navbar-logo img {
-        height: 49px;
-        width: 180px;
-        object-fit: contain;
-    }
-} 
-
-
-/* ===== LINKS ===== */
-
-.navbar-links{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: clamp(4px, 1.5vw, 15px); 
-    margin-right: 2vw;
-}
-
-.navbar-links li{
-    margin: 0;
-}
-
-.navbar-links li a{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(4px, 1vw, 8px);
-    color: var(--color-surface);
-    text-decoration: none;
-    font-weight: 500;
-    padding: clamp(8px, 1.5vw, 14px) clamp(6px, 1.5vw, 16px);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: .3s ease;
+.navbar-logo img {
+  display: block;
 }
 
 @media screen and (min-width: 350px) and (max-width: 767px) {
-    .navbar-links {
-        height: 28px;
-        object-fit: contain;
-    }
-    .navbar-links li a{
-        font-size: var(--text-xs);
-    }
+  .navbar-logo img {
+    width: 90px;
+    height: 28px;
+    object-fit: contain;
+  }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px)  {
-    .navbar-links {
-        height: 42px;
-        object-fit: contain;
-    }
-    .navbar-links li a{
-        font-size: var(--text-sm);
-    }
-} 
-
-@media screen and (min-width: 1024px)  {
-    .navbar-links{
-        height: 49px;
-        object-fit: contain;
-    }
-    .navbar-links li a{
-        font-size: var(--text-md);
-    }
-} 
-
-
-/* ===== BOTON CREAR CUENTA ===== */
-
-.navbar-links li:first-child a{
-    background: var(--color-accent);
-    color: var(--color-text);
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .navbar-logo img {
+    width: 140px;
+    height: 42px;
+    object-fit: contain;
+  }
 }
 
-.navbar-links li:first-child a:hover{
-    background: var(--color-accent2);
-    color: var(--color-text);
+@media screen and (min-width: 1024px) {
+  .navbar-logo img {
+    height: 49px;
+    width: 180px;
+    object-fit: contain;
+  }
 }
 
-
-/* ===== INICIAR SESION ===== */
-
-.navbar-links li:last-child a:hover{
-    color: var(--color-accent);
+/* ===== ACCIONES / LINKS DEL NAVBAR ===== */
+.navbar-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(4px, 1.5vw, 15px);
+  margin-right: 2vw;
+  list-style: none;
+  padding: 0;
 }
 
-/* ===== MENU HAMBURGUESA ===== */
-
-.sidebar{
-    position: fixed;
-    top: 72px;
-    left: 0;
-    width: 100%;
-    background: var(--color-primary);
-    padding: 30px 20px;
-    transform: translateX(-100%);
-    opacity: 0;
-    transition: transform .3s ease, opacity .3s ease;
-    z-index: 999;
-    
+.navbar-links li {
+  margin: 0;
 }
- 
-/* media menu hamburguesa responsive  */
+
+/* Estilos base para links y botones dentro del navbar */
+.navbar-btn,
+.navbar-user-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 1vw, 8px);
+  color: var(--color-surface);
+  text-decoration: none;
+  font-weight: 500;
+  padding: clamp(8px, 1.5vw, 14px) clamp(6px, 1.5vw, 16px);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+}
+
+/* Adaptación de fuentes responsive */
 @media screen and (min-width: 350px) and (max-width: 767px) {
-    .sidebar {
-        top: 75px;
-        height: calc(100vh - 84px);
-    }
+  .navbar-links {
+    height: 28px;
+  }
+  .navbar-btn,
+  .navbar-user-link {
+    font-size: var(--text-xs);
+  }
+  .navbar-user-name {
+    display: none; /* En pantallas muy chicas oculta el texto y deja solo el Avatar */
+  }
+}
 
-    .sidebar ul li a{
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .navbar-links {
+    height: 42px;
+  }
+  .navbar-btn,
+  .navbar-user-link {
+    font-size: var(--text-sm);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar-links {
+    height: 49px;
+  }
+  .navbar-btn,
+  .navbar-user-link {
+    font-size: var(--text-md);
+  }
+}
+
+/* ===== BOTÓN CREAR CUENTA ===== */
+.navbar-btn-register {
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+
+.navbar-btn-register:hover {
+  background: var(--color-accent2);
+  color: var(--color-text);
+}
+
+/* ===== BOTÓN INICIAR SESIÓN / CERRAR SESIÓN ===== */
+.navbar-btn-login:hover,
+.navbar-btn-logout:hover,
+.navbar-user-link:hover {
+  color: var(--color-accent);
+}
+
+/* ===== ENLACE DE USUARIO Y AVATAR ===== */
+.navbar-user-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== SIDEBAR LATERAL ===== */
+.sidebar {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  width: 100%;
+  background: var(--color-primary);
+  padding: 30px 20px;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 999;
+}
+
+@media screen and (min-width: 350px) and (max-width: 767px) {
+  .sidebar {
+    top: 75px;
+    height: calc(100vh - 84px);
+  }
+  .sidebar ul li a {
     font-size: var(--text-md2);
-    }
+  }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px)  {
-    .sidebar {
-        top:80px;
-        height: calc(100vh - 96px);
-        width: 35vw;
-    }
-
-    .sidebar ul li a{
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .sidebar {
+    top: 80px;
+    height: calc(100vh - 96px);
+    width: 35vw;
+  }
+  .sidebar ul li a {
     font-size: var(--text-lg);
-    }
-} 
+  }
+}
 
-@media screen and (min-width: 1024px)  {
-    .sidebar{
-        top: 90px;
-        width: 18vw;
-        height: calc(100vh - 105px);
-    }
-
-    .sidebar ul li a{
+@media screen and (min-width: 1024px) {
+  .sidebar {
+    top: 90px;
+    width: 18vw;
+    height: calc(100vh - 105px);
+  }
+  .sidebar ul li a {
     font-size: var(--text-xl);
-    }
-} 
-
-
-.sidebar.active{
-    transform: translateX(0);
-    opacity: 1;
+  }
 }
 
-.sidebar ul{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.sidebar.active {
+  transform: translateX(0);
+  opacity: 1;
 }
 
-.sidebar ul li{
-    margin-bottom: clamp(10px, 2vw, 40px);
-    text-align: right;
-    padding: 5% 0px;
-    width: 85%;
-    border-bottom: var(--color-accent2) clamp(1px, 0.5vw, 3px) solid;
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  list-style: none;
 }
 
-.sidebar ul li:hover{
-    border-bottom: var(--color-accent) clamp(4px, 0.5vw, 8px) solid;
+.sidebar ul li {
+  margin-bottom: clamp(10px, 2vw, 40px);
+  text-align: right;
+  padding: 5% 0px;
+  width: 85%;
+  border-bottom: var(--color-accent2) clamp(1px, 0.5vw, 3px) solid;
+  cursor: pointer;
 }
-.sidebar ul li a{
-    letter-spacing: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: .3s;
-    color: var(--color-surface);
+
+.sidebar ul li:hover {
+  border-bottom: var(--color-accent) clamp(4px, 0.5vw, 8px) solid;
+}
+
+.sidebar ul li a {
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  color: var(--color-surface);
 }
