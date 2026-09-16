@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class RegisterUserDTO {
+public class UserRequestDTO {
 
     @NotBlank(message = "El nombre es obligatorio")
     @Size(min = 1, max = 50, message = "El nombre debe tener entre 2 y 50 caracteres")
