@@ -78,6 +78,12 @@ export const userService = {
     return response.data;
   },
 
+  //Cambiar Rol de usuario
+  updateUserRole: async (id, newRole) => {
+    const response = await axios.patch(`${API_URL}/${id}/role`, { role: newRole }, config);
+    return response.data;
+  },
+
   //Eliminar usuario
   deleteUser: async (id) => {
     const response = await axios.delete(`${API_URL}/${id}`);
