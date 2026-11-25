@@ -16,9 +16,11 @@ import SaveCar from "./pages/Admin/SaveCar/SaveCar.jsx";
 import CarDetail from "./pages/public/CarDetail/CarDetail.jsx";
 import CarList from "./pages/Admin/CarList/CarList.jsx";
 import AuthPage from "./pages/public/AuthPage/AuthPage.jsx";
+import Categories from "./pages/Admin/Categories/Categories.jsx";
 import { Profile } from "./pages/public/UserProfile/UserProfile.jsx";
 import  UserList  from "./pages/Admin/UserList/UserList.jsx";
 import { PublicRoute , ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute.jsx';
+import FeatureAdmin from './pages/Admin/FeatureAdmin/FeatureAdmin.jsx';
 
 function App() {
 
@@ -99,6 +101,9 @@ function App() {
             <Route path="/admin/save-car" element={<SaveCar />} />
             <Route path="/admin/list-cars" element={<CarList />} />
             <Route path="/admin/users" element={<UserList />} />
+            <Route path="/admin/features" element={<FeatureAdmin />} />
+            <Route path="/admin/categories" element={<Categories />} />
+
             
         </Routes> 
       </main>

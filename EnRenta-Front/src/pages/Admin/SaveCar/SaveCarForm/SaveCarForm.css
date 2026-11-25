@@ -105,3 +105,86 @@
   font-size: 0.875rem;
   margin: 0;
 }
+
+.save-car-features-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+/* Título de la sección */
+.save-car-features-section .section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* Grilla adaptable que organiza los ítems */
+.save-car-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  background-color: #f8fafc;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Cada ítem individual (Checkbox + Ícono + Texto) */
+.save-car-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+}
+
+.save-car-feature-item:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+/* Estilo cuando el checkbox está seleccionado */
+.save-car-feature-item:has(.save-car-feature-checkbox:checked) {
+  background-color: #eff6ff;
+  border-color: #3b82f6;
+}
+
+/* Checkbox */
+.save-car-feature-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+/* Label interno que agrupa ícono y texto */
+.save-car-feature-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #334155;
+}
+
+/* Ícono dentro de la tarjeta */
+.save-car-feature-label svg {
+  font-size: 1.1rem;
+  color: #2563eb;
+  flex-shrink: 0;
+}
+
+/* Mensaje si no hay características disponibles */
+.no-features-text {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+  padding: 10px 0;
+}

@@ -66,6 +66,15 @@
   color: var(--color-text-secondary);
 }
 
+.product-description{
+
+  margin: 20px 10%;
+  padding: 20px;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 768px) {

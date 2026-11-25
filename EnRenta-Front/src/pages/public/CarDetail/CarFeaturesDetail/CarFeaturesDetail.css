@@ -1,0 +1,61 @@
+/* Contenedor principal de la sección de características en el detalle */
+.car-features-detail-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px 0;
+  border-top: 2px solid var(--color-accent);
+}
+
+/* Título de la sección (ej. "¿Qué ofrece este vehículo?") */
+.car-features-detail-container h3 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* Grilla adaptable para mostrar las características en orden */
+.car-features-detail{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px 24px;
+}
+
+/* Cada tarjeta/ítem individual de característica */
+.car-feature-detail-item {
+  display: flex;
+  align-items: right;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+
+/* Ícono renderizado dinámicamente */
+.detail-feature-icon {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+/* Nombre de la característica */
+.car-feature-detail-name {
+  font-size: 0.95rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+/* Diseño responsivo para pantallas medianas (Tablets) */
+@media (max-width: 768px) {
+  .car-features-detail-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Diseño responsivo para pantallas pequeñas (Celulares) */
+@media (max-width: 480px) {
+  .car-features-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}

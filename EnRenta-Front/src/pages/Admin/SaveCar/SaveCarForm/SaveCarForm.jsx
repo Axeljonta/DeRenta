@@ -1,22 +1,55 @@
 import { useEffect, useState } from "react";
 import { useAllCars } from "../../../../hooks/useAllCars";
 import { carService } from "../../../../services/carService";
+import { featureService } from "../../../../services/featureService";
+import { categoryService } from "../../../../services/categoryService";
+import * as FaIcons from "react-icons/fa6";
 import './SaveCarForm.css';
 
-
-export const SaveCarForm = ({ carToEdit = null, setCars}) => {
-  
- // Obtiene el listado completo de autos para hacer validaciones de duplicados
+export const SaveCarForm = ({ carToEdit = null, setCars, onClose }) => {
+  // Obtiene el listado completo de autos para hacer validaciones de duplicados
   const { cars } = useAllCars();
   
   // Estado para gestionar los mensajes de error a mostrar en el formulario
   const [error, setError] = useState("");
 
+  // Estado para almacenar el catálogo completo de categorias cargadas de la BD
+  const [availableCategories, setAvailableCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const data = await categoryService.getAllCategories();
+        setAvailableCategories(data);
+      } catch (err) {
+        console.error("Error al cargar categorias:", err);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  // Estado para almacenar el catálogo completo de características cargadas de la BD
+  const [availableFeatures, setAvailableFeatures] = useState([]);
+
+  // Cargar el catálogo de características desde el backend al montar el componente
+  useEffect(() => {
+    const fetchFeatures = async () => {
+      try {
+        const data = await featureService.getAll();
+        setAvailableFeatures(data);
+      } catch (err) {
+        console.error("Error al cargar características:", err);
+      }
+    };
+    fetchFeatures();
+  }, []);
+
   // Estado principal del formulario (valores por defecto para creación)
   const [form, setForm] = useState({
     carName: "",
     carDescription: "",
-    category: "",
+    categoryId: "",
+    features: [], // Guarda los IDs de las características seleccionadas [1, 2, 5]
     images: [
       {
         imageUrl: "",
@@ -25,17 +58,28 @@ export const SaveCarForm = ({ carToEdit = null, setCars}) => {
     ],
   });
 
-  // Si se recibe la prop `carToEdit`, llena el formulario con los datos existentes (Modo Edición)
+  
+
+  // 2. Si se recibe `carToEdit`, llena el formulario con los datos existentes (Modo Edición)
   useEffect(() => {
     if (carToEdit) {
       setForm({
         carName: carToEdit.carName || "",
         carDescription: carToEdit.carDescription || "",
-        category: carToEdit.category || "",
-        // Si el auto a editar tiene imágenes las carga, si no, inicializa con un campo vacío
+        categoryId: carToEdit.category?.id || null,
+        features: carToEdit.features ? carToEdit.features.map((f) => f.id) : [],
         images: carToEdit.images?.length > 0 
-          ? carToEdit.images 
+          ? carToEdit.images.map(img => ({ ...img }))
           : [{ imageUrl: "", mainImage: true }],
+      });
+    } else {
+      // Si se pasa a modo creación limpia el formulario
+      setForm({
+        carName: "",
+        carDescription: "",
+        category: "",
+        features: [],
+        images: [{ imageUrl: "", mainImage: true }],
       });
     }
   }, [carToEdit]);
@@ -49,14 +93,29 @@ export const SaveCarForm = ({ carToEdit = null, setCars}) => {
     });
   };
 
-  // Maneja el cambio del valor de una URL de imagen según su índice en la lista
-  const handleImgChange = (index, value) => {
-    const newImages = [...form.images];
-    newImages[index].imageUrl = value;
+  // Maneja la selección/deselección de checkboxes de características
+  const handleFeatureToggle = (featureId) => {
+    setError("");
+    setForm((prevForm) => {
+      const isSelected = prevForm.features.includes(featureId);
+      const updatedFeatures = isSelected
+        ? prevForm.features.filter((id) => id !== featureId) // Desmarca
+        : [...prevForm.features, featureId];                 // Marca
 
-    setForm({
-      ...form,
-      images: newImages,
+      return {
+        ...prevForm,
+        features: updatedFeatures,
+      };
+    });
+  };
+
+  // Maneja el cambio inmutable del valor de una URL de imagen
+  const handleImgChange = (index, value) => {
+    setForm((prevForm) => {
+      const updatedImages = prevForm.images.map((img, i) =>
+        i === index ? { ...img, imageUrl: value } : img
+      );
+      return { ...prevForm, images: updatedImages };
     });
   };
 
@@ -68,28 +127,48 @@ export const SaveCarForm = ({ carToEdit = null, setCars}) => {
         ...form.images,
         {
           imageUrl: "",
-          mainImage: false, // Las imágenes adicionales no son principales
+          mainImage: false,
         },
       ],
     });
   };
 
+  // Remueve un campo de imagen adicional
+  const removeImageField = (index) => {
+    setForm((prevForm) => {
+      const filtered = prevForm.images.filter((_, i) => i !== index);
+      const updatedImages = filtered.map((img, i) => ({
+        ...img,
+        mainImage: i === 0,
+      }));
+      return { ...prevForm, images: updatedImages };
+    });
+  };
+
+  // Renderizador dinámico del ícono mediante react-icons
+  const renderIcon = (iconName) => {
+    const IconComponent = FaIcons[iconName];
+    return IconComponent 
+      ? <IconComponent className="save-car-feature-icon" /> 
+      : <FaIcons.FaCircleQuestion className="save-car-feature-icon" />;
+  };
+
   // Procesa el envío del formulario (Creación o Edición)
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Previene la recarga de página predeterminada del navegador
+    e.preventDefault();
     setError("");
 
-    // 1. Validar que los campos requeridos no estén vacíos
-    if (!form.carName.trim() || !form.carDescription.trim() || !form.category) {
-      setError("El nombre, la descripción y la categoría son obligatorios.");
+    // 1. Validar campos requeridos
+    if (!form.carName.trim() || !form.carDescription.trim()) {
+      setError("El nombre y la descripción son obligatorios.");
       return;
     }
 
-    // 2. Comprobar si ya existe otro auto con el mismo nombre (evita duplicados)
+    // 2. Comprobar si ya existe otro auto con el mismo nombre
     const exists = cars?.some(
       (car) =>
         car.carName.toLowerCase().trim() === form.carName.toLowerCase().trim() &&
-        car.id !== carToEdit?.id // Excluye el auto actual si estamos editando
+        car.id !== carToEdit?.id
     );
 
     if (exists) {
@@ -97,40 +176,57 @@ export const SaveCarForm = ({ carToEdit = null, setCars}) => {
       return;
     }
 
-    // 3. Limpiar el objeto antes de enviarlo: elimina URLs de imágenes vacías
+    // 3. Preparar el payload transformando los IDs de características
     const cleanPayload = {
-      ...form,
-      id: carToEdit ? carToEdit.id : null, // Asegura mandar el ID si es un update
-      images: form.images.filter((img) => img.imageUrl.trim() !== ""),
+        id: carToEdit ? carToEdit.id : null, 
+        carName: form.carName,
+        carDescription: form.carDescription,
+        categoryId: form.categoryId ? Number(form.categoryId) : null,
+        featureIds: form.features,         
+        images: form.images.filter((img) => img.imageUrl.trim() !== ""),
     };
     
     try {
-      if(carToEdit){
-        console.log("Payload enviado al backend:", cleanPayload);
-        const updatedCar = await carService.updateCar(carToEdit.id, cleanPayload)
+      if (carToEdit) {
+        console.log("Payload enviado al backend (UPDATE):", cleanPayload);
+        const updatedCar = await carService.updateCar(carToEdit.id, cleanPayload);
 
-        if(setCars){
-          setCars((prevCars)=> prevCars.map((car)=>(car.id === carToEdit.id ? updatedCar : car)))
+        if (setCars) {
+          setCars((prevCars) => 
+            prevCars.map((car) => (car.id === carToEdit.id ? updatedCar : car))
+          );
         }
-      } 
-      else{
-        await carService.createCar(cleanPayload); // Envía el JSON tal cual Postman
-        alert("Auto agregado con éxito");
+        
+      } else {
+        console.log("Payload enviado al backend (CREATE):", cleanPayload);
+        const createdCar = await carService.createCar(cleanPayload);
+        
+        if (setCars) {
+          setCars((prevCars) => [...prevCars, createdCar]);
+        }
+
         setForm({
           carName: "",
           carDescription: "",
+          category: "",
+          features: [],
           images: [{ imageUrl: "", mainImage: true }],
-        });}
-      
-       
-    }catch (err) {
+        });
+
+        
+      }
+      if (onClose) {
+        onClose();
+      }
+    } catch (err) {
       setError(err.message || "Error al guardar el vehículo.");
-    };
-  }
+    }
+  };
+
 
   return (
     <form onSubmit={handleSubmit} className="save-car-form">
-      <h2>Agregar Producto</h2>
+      <h2>{carToEdit ? "Editar Producto" : "Agregar Producto"}</h2>
 
       <input
         type="text"
@@ -148,28 +244,66 @@ export const SaveCarForm = ({ carToEdit = null, setCars}) => {
       />
 
       <select
-        name="category"
-        id="category"
-        value={form.category}
-        onChange={handleChange}>
-          <option value="">Seleccionar categoría</option>
-          <option value="ECONOMICO">Economico</option>
-          <option value="CALLE">Calle</option>
-          <option value="DEPORTIVO">Deportivo</option>
-          <option value="PREMIUM">Premium</option>
+        name="categoryId"
+        id="categoryId"
+        value={form.categoryId}
+        onChange={handleChange}
+      >
+        <option value="">Seleccionar categoría</option>
+        {availableCategories.map((cat) => (
+          <option key={cat.id} value={cat.id}>
+            {cat.categoryName || cat.name}
+          </option>
+          ))}
       </select>
 
+      {/* SECCIÓN DE CARACTERÍSTICAS */}
+      <div className="save-car-features-section">
+        <label className="section-title">Características del vehículo:</label>
+        {availableFeatures.length === 0 ? (
+          <p className="no-features-text">No hay características cargadas en el sistema.</p>
+        ) : (
+          <div className="save-car-features-grid">
+            {availableFeatures.map((feature) => (
+              <label key={feature.id} className="save-car-feature-item">
+                <input
+                  type="checkbox"
+                  checked={form.features.includes(feature.id)}
+                  onChange={() => handleFeatureToggle(feature.id)}
+                  className="save-car-feature-checkbox"
+                />
+                <span className="save-car-feature-label">
+                  {renderIcon(feature.featureIcon)}
+                  {feature.featureName}
+                </span>
+              </label>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* SECCIÓN DE IMÁGENES */}
       <div className="images-section">
-        <label>Imágenes del producto:</label>
+        <label className="section-title">Imágenes del producto:</label>
         {form.images.map((image, index) => (
-          <input
-            name={`image-${index}`}
-            key={index}
-            type="text"
-            placeholder={index === 0 ? "URL Imagen Principal" : `URL Imagen ${index + 1}`}
-            value={image.imageUrl}
-            onChange={(e) => handleImgChange(index, e.target.value)}
-          />
+          <div key={index} className="image-input-group">
+            <input
+              name={`image-${index}`}
+              type="text"
+              placeholder={index === 0 ? "URL Imagen Principal" : `URL Imagen ${index + 1}`}
+              value={image.imageUrl}
+              onChange={(e) => handleImgChange(index, e.target.value)}
+            />
+            {form.images.length > 1 && (
+              <button
+                type="button"
+                className="remove-img-btn"
+                onClick={() => removeImageField(index)}
+              >
+                ✕
+              </button>
+            )}
+          </div>
         ))}
 
         <button type="button" onClick={addImageField}>
@@ -177,9 +311,11 @@ export const SaveCarForm = ({ carToEdit = null, setCars}) => {
         </button>
       </div>
 
-      <button type="submit">{carToEdit? "Guardar Cambios" : "Agregar producto"}</button>
+      <button type="submit">
+        {carToEdit ? "Guardar Cambios" : "Agregar producto"}
+      </button>
 
       {error && <p className="error-message">{error}</p>}
     </form>
-  );
-}
+  ); 
+};

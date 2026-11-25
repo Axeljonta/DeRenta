@@ -1,5 +1,5 @@
-import { useRandomCars } from "../../hooks/useRandomCars";
-import { CarCard } from "../CarCard/CarCard";
+import { useRandomCars } from "../../../../../hooks/useRandomCars";
+import { CarCard } from "../../../../../components/CarCard/CarCard";
 
 import "./HomeRecommendations.css";
 

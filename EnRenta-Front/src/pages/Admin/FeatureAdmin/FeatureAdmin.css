@@ -1,0 +1,98 @@
+.feature-admin-container {
+  padding: 20px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.feature-admin-header {
+  margin-bottom: 20px;
+}
+
+.feature-admin-header h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.feature-admin-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Formulario */
+.feature-admin-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.feature-form-group {
+  flex: 1;
+}
+
+.feature-form-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.feature-form-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Tabla de características */
+.feature-admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.feature-admin-table-header th {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 2px solid #ccc;
+  background-color: #f8f9fa;
+}
+
+.feature-admin-table-body td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.feature-icon-preview {
+  margin-right: 8px;
+  font-size: 1.5rem;
+}
+
+.feature-empty-row {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
+
+/* Mensajes */
+.feature-message {
+  font-size: 0.95rem;
+  margin: 10px 0;
+}
+
+.feature-message-error {
+  color: #d9534f;
+}
+
+.feature-form-help {
+  display: block;
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+.feature-icon-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

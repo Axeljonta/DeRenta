@@ -29,6 +29,19 @@ function Admin() {
             <button className='admin-botton'>Administrar Roles</button>
           </Link> 
         </div>
+
+        <div className="admin-section">
+          <h4>Gestión de Características</h4>
+          <Link to="/admin/features">
+            <button className='admin-botton'>Administrar Características</button>
+          </Link> 
+        </div>
+        <div className="admin-section">
+          <h4>Gestión de Categorías</h4>
+          <Link to="/admin/categories">
+            <button className='admin-botton'>Agregar categoría</button>
+          </Link>
+        </div>
       </div>  
 
       <div className="mobile-message">

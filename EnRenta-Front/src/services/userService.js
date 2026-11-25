@@ -60,6 +60,17 @@ export const userService = {
     }
 
   },
+  
+  resendConfirmation: async (email) => {
+    try {
+      const response = await axios.post(`${API_URL}/resend-confirmation`, null, {
+        params: { email }
+      });
+      return response.data;
+    } catch (error) {
+      throw error.response?.data || "Error al reenviar el correo de confirmación.";
+    }
+  },
 
   //Obtener usuario logueado
   getLoggedInUser: () => {

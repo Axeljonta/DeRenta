@@ -62,126 +62,132 @@ const CarList = () => {
     }; 
     
 
-  return (
-    <div> 
-        <div className="car-list-container isVisible">
-            <div className="car-list-header">
-                <h2>Lista de Autos</h2>
-            </div>  
-            <div className="car-list-content">
-            <table className="car-list-table">
-                    <thead className="car-list-table-header">
-                        <tr>
-                            <th>Id</th>
-                            <th>Modelo</th>
-                            <th>Descripción</th>
-                            <th>Imagenes</th>
-                            <th>Precio</th>
-                            <th>Categoría</th> 
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody className="car-list-table-body">
-                        {
-                            cars.map((car) => ( 
-                            
-                                <tr key={car.id} className="car-list-table-row">
-                                    <td>{car.id}</td>
-                                    <td>{car.carName}</td>
-                                    <td className="col-description">{car.carDescription}</td>
-                                    <td><img    
-                                            src={car.mainImageUrl}  
-                                            alt={car.carName} 
-                                            className="car-table-img" 
-                                            onClick={() => handleOpenModal(car)} /></td>
-                                    <td>proximamente</td>
-                                    <td className="col-category">{car.category ? car.category.charAt(0) + car.category.slice(1).toLowerCase() : ""}</td>
-                                    <td>
-                                        <button 
-                                        className="btn btn-primary"
-                                        onClick={() => handleEditClick(car)}>
-                                            Editar
-                                        </button>
-                                        <button 
-                                        className="btn btn-danger" 
-                                        onClick={() => handleDeleteClick(car)}>
-                                            Eliminar
-                                        </button>
-                                    </td>
-                                </tr>
-                                
-                                )
-                            )
-                        }
-                        
-                    </tbody>
-                </table>   
-                
-                {/* Modal para ver todas las imágenes de un auto */}
-                {selectedCar && (
-                    <div className="modal-gallery-container">
-                        <ModalGallery
-                        isOpen={isModalOpen}
-                        onClose={handleCloseModal}
-                        images={selectedCar?.images || []}
-                        title={selectedCar?.carName || ""}
-                        />
-                    </div>
-                )}
-
-                {/* Modal para confirmar la eliminación de un auto */}
-                {carToDelete && (
-                    <div className="modal-overlay">
-                        <div className="modal-content">
-                        <h3>Confirmar eliminación</h3>
-                        <p>
-                            ¿Estás seguro de que deseas eliminar el producto{' '}
-                            <strong>{carToDelete.carName}</strong>? Esta acción no se puede deshacer.
-                        </p>
-                        <div className="modal-actions">
-                            <button 
-                            className="btn btn-secondary" 
-                            onClick={handleCancelDelete}
-                            >
-                            Cancelar
-                            </button>
-                            <button 
-                            className="btn btn-danger" 
-                            onClick={() => handleConfirmDeleteCar(carToDelete.id)}
-                            >
-                            Eliminar
-                            </button>
-                        </div>
-                        </div>
-                    </div>
-                )}
-                {/* Modal para editar un auto */}
-                {carToEdit && (
-                        <div className="modal-overlay">
-                            <div className="modal-content form-modal-content">
-                                <SaveCarForm 
-                                    carToEdit={carToEdit} 
-                                    setCars= {setCars}
-                                /> 
-                                <button 
-                                className="btn btn-secondary btn-edit" 
-                                onClick={handleCancelEdit}
-                                >
-                                Salir
-                                </button>
-                            </div>
-                            
-                        </div>
-                    )}
-                
-            </div> 
-            
+ return (
+    <div>
+      <div className="admin-list-container isVisible">
+        <div className="admin-list-header">
+          <h2>{carToEdit ? "Editar Producto" : "Agregar Producto"}</h2>
         </div>
-        <div className="mobile-message">
-          <p>Esta función no está disponible en modo móvil.</p>
-      </div> 
-    </div> 
+
+        <div className="admin-list-content">
+          <table className="admin-list-table">
+            <thead className="admin-list-table-header">
+              <tr>
+                <th>Id</th>
+                <th>Modelo</th>
+                <th>Descripción</th>
+                <th>Imagenes</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody className="admin-list-table-body">
+              {cars.map((car) => (
+                <tr key={car.id} className="admin-list-table-row">
+                  <td>{car.id}</td>
+                  <td>{car.carName}</td>
+                  <td className="col-description">{car.carDescription}</td>
+                  <td>
+                    <img
+                      src={car.mainImageUrl}
+                      alt={car.carName}
+                      className="admin-table-img"
+                      onClick={() => handleOpenModal(car)}
+                    />
+                  </td>
+                  <td>proximamente</td>
+                  <td className="col-category">
+                    {car.category?.name
+                      ? car.category.name.charAt(0).toUpperCase() +
+                        car.category.name.slice(1).toLowerCase()
+                      : "Sin categoría"}
+                  </td>
+                  <td>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => handleEditClick(car)}
+                    >
+                      Editar
+                    </button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => handleDeleteClick(car)}
+                    >
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* Modal para ver todas las imágenes de un auto */}
+          {selectedCar && (
+            <div className="modal-gallery-container">
+              <ModalGallery
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+                images={selectedCar?.images || []}
+                title={selectedCar?.carName || ""}
+              />
+            </div>
+          )}
+
+          {/* Modal para confirmar la eliminación de un auto */}
+          {carToDelete && (
+            <div className="modal-overlay">
+              <div className="modal-content">
+                <h3>Confirmar eliminación</h3>
+                <p>
+                  ¿Estás seguro de que deseas eliminar el producto{" "}
+                  <strong>{carToDelete.carName}</strong>? Esta acción no se puede
+                  deshacer.
+                </p>
+                <div className="modal-actions">
+                  <button
+                    className="btn btn-secondary"
+                    onClick={handleCancelDelete}
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleConfirmDeleteCar(carToDelete.id)}
+                  >
+                    Eliminar
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Modal para editar un auto */}
+          {carToEdit && (
+            <div className="modal-overlay">
+              <div className="modal-content form-modal-content">
+                <SaveCarForm
+                  carToEdit={carToEdit}
+                  setCars={setCars}
+                  onClose={handleCancelEdit}
+                />
+                <button
+                  className="btn btn-secondary btn-edit"
+                  onClick={handleCancelEdit}
+                >
+                  Salir
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="mobile-message">
+        <p>Esta función no está disponible en modo móvil.</p>
+      </div>
+    </div>
   );
-}
+};
 
 export default CarList;
